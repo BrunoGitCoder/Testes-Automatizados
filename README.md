@@ -14,7 +14,7 @@
 
 ## 1. Introdução 📘
 
-Este relatório apresenta a execução de testes automatizados, utilizando a abordagem de **caixa preta**, aplicando testes **funcionais** e **não funcionais** em um sistema simulado. O foco está em validar funcionalidades do sistema e aspectos de usabilidade, integração e interface.
+Este relatório apresenta um conjunto de testes automatizados desenvolvidos em Python, aplicando as abordagens de **testes funcionais**, **integração** e **interface**. O foco é garantir a qualidade de um sistema web relacionado à gestão de filmes.
 
 ---
 
@@ -22,17 +22,18 @@ Este relatório apresenta a execução de testes automatizados, utilizando a abo
 
 ### Objetivo
 
-Avaliar o comportamento do sistema em cenários simulados, empregando testes automatizados desenvolvidos com **Python** e **Pytest**, com foco em:
+Testar funcionalidades essenciais da aplicação com foco em:
 
-- Correção funcional  
-- Integração entre componentes  
-- Validação de interface com o usuário
+- Acesso e autenticação de usuários  
+- Pesquisa e manipulação de dados de filmes  
+- Integração entre camadas da aplicação  
+- Redirecionamentos de interface (UI)
 
 ### 🛠️ Ferramentas Utilizadas
 
-- **Python**: Linguagem principal para automação de testes.  
-- **Pytest**: Framework escolhido pela sua flexibilidade, clareza na sintaxe e suporte a fixtures.  
-- **Selenium (presumido)**: Potencial ferramenta usada em `test_ui.py` para simular interações com a interface gráfica (apesar do código não estar explícito).
+- **Python**: Linguagem principal dos testes.  
+- **Pytest**: Framework de testes escolhido pela sua simplicidade e organização.  
+- **Bibliotecas auxiliares**: Utilização de `requests`, manipulação de dados JSON e suporte a fixtures via `conftest.py`.
 
 ---
 
@@ -42,9 +43,9 @@ Avaliar o comportamento do sistema em cenários simulados, empregando testes aut
 
 📄 Arquivo: `test_funcional.py`
 
-- `test_login_sucesso`: Verifica autenticação válida.  
-- `test_login_falha`: Verifica falha de autenticação com dados inválidos.  
-- `test_navegacao_menu`: Garante que o menu principal é acessível após login.
+- `test_login`: Verifica se o login funciona corretamente com credenciais válidas.  
+- `test_search_movie`: Realiza busca por um filme específico e valida o resultado.  
+- `test_show_admin_menu`: Garante que o menu administrativo aparece corretamente após login.
 
 ---
 
@@ -53,34 +54,31 @@ Avaliar o comportamento do sistema em cenários simulados, empregando testes aut
 #### a) Testes de Integração  
 📄 Arquivo: `test_integracao.py`
 
-- `test_login_e_dashboard`: Valida a comunicação entre autenticação e painel principal.  
-- `test_entrada_dados`: Simula preenchimento de formulários e envia dados entre componentes.
+- `test_movie_register`: Testa o processo de cadastro de um novo filme no sistema.  
+- `test_movie_delete`: Verifica se a exclusão de um filme funciona corretamente.
 
 #### b) Testes de Interface  
 📄 Arquivo: `test_ui.py`
 
-- `test_tela_login_exibida`: Verifica exibição correta da tela de login.  
-- `test_elementos_visiveis`: Garante visibilidade de campos e botões essenciais.  
-- `test_botao_submit_funciona`: Testa funcionalidade do botão de submissão.
+- `test_ui_redirect_buttons`: Confirma se os botões de interface redirecionam para as páginas corretas.
 
 ---
 
 ## 4. Resultados Obtidos 📈
 
-| Tipo de Teste           | Nome do Teste                | Resultado Esperado                     | Status |
-|-------------------------|------------------------------|----------------------------------------|--------|
-| Funcional               | Login com sucesso            | Usuário redirecionado ao dashboard     | ✔️     |
-| Funcional               | Login com falha              | Mensagem de erro exibida               | ✔️     |
-| Funcional               | Navegação após login         | Menu principal acessível               | ✔️     |
-| Integração              | Login + Dashboard            | Integração entre módulos OK            | ✔️     |
-| Integração              | Envio de dados               | Formulário enviado corretamente        | ✔️     |
-| Interface (UI)          | Tela de login                | Elementos visíveis                     | ✔️     |
-| Interface (UI)          | Botão de login               | Clique processado com sucesso          | ✔️     |
+| Tipo de Teste           | Nome do Teste               | Resultado Esperado                         | Status |
+|-------------------------|-----------------------------|--------------------------------------------|--------|
+| Funcional               | Login                       | Login com sucesso                          | ✔️     |
+| Funcional               | Buscar Filme                | Filme retornado corretamente               | ✔️     |
+| Funcional               | Menu Admin                  | Menu visível após autenticação             | ✔️     |
+| Integração              | Cadastro de Filme           | Filme registrado com sucesso               | ✔️     |
+| Integração              | Remoção de Filme            | Filme removido da base de dados            | ✔️     |
+| Interface (UI)          | Botões de Redirecionamento  | Redirecionamento correto ao clicar         | ✔️     |
 
 ---
 
 ## 5. Considerações Finais 🏁
 
-Os testes executados comprovaram que o sistema se comporta conforme o esperado nas funcionalidades principais e em aspectos de integração e interface. A abordagem automatizada trouxe **eficiência**, **confiabilidade** e **consistência** nas verificações aplicadas.
+O projeto obteve sucesso na execução de todos os testes propostos, assegurando o correto funcionamento de funcionalidades principais, além da integração entre camadas e interações de interface.
 
-Esse conjunto de testes serve como base sólida para garantir a qualidade do sistema em futuras atualizações ou manutenções.
+Esses testes automatizados representam um avanço na qualidade do software, trazendo segurança e agilidade para futuras evoluções da aplicação.
